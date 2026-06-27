@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+
+# Local uploads
+server/uploads/
+
+# Local JSON database (if you still keep it)
+server/data/
+
+# Dependencies
+node_modules/
+
+# Build files
+dist/
