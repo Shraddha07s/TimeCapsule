@@ -129,33 +129,6 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
 ---
 
-## 📸 Screenshots
-
-*Place your application screenshots inside `/public/screenshots/` and update references below:*
-
-### 1. Landing Page
-*![Landing Page Placeholder](https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800)*
-
-### 2. Dashboard
-*![Dashboard Placeholder](https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800)*
-
-### 3. Memory Galaxy
-*![Memory Galaxy Placeholder](https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=800)*
-
-### 4. Create Memory
-*![Create Memory Placeholder](https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800)*
-
-### 5. Future Letters
-*![Future Letters Placeholder](https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800)*
-
-### 6. Statistics
-*![Statistics Placeholder](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800)*
-
-### 7. Themes
-*![Themes Placeholder](https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800)*
-
----
-
 ## 🗺️ Product Roadmap
 
 ### 🚀 Version 1.0 (Core Features)
