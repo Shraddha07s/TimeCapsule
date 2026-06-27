@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "kf7garo3s2wsdeoehjcm",
+    "createdAt": "2026-06-27T16:28:56.672Z",
+    "updatedAt": "2026-06-27T16:44:30.599Z",
+    "username": "Shraddha",
+    "email": "sharmalily0777@gmail.com",
+    "password": "$2a$10$TLGpFw.0X5CM7A/VwTBh..V1QYfmu/EPuqZX1/VVvqdJDM.20jCja",
+    "inviteCode": "OT68OA",
+    "verificationToken": "00vxqdndnhvf",
+    "isVerified": false,
+    "bio": "",
+    "avatar": "",
+    "anniversaryDate": "2025-08-19",
+    "relationshipStartDate": "2025-08-19",
+    "favoriteSong": ""
+  }
+]
