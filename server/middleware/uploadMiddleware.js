@@ -1,20 +1,18 @@
 import multer from 'multer';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import path from 'path';
-import fs from 'fs';
+import cloudinary from '../config/cloudinary.js';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'server', 'uploads');
-
-if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, UPLOAD_DIR);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+    // Cloudinary resource_type: 'image', 'video', or 'raw'.
+    // Setting 'auto' lets Cloudinary auto-detect images, video, and audio.
+    return {
+      folder: 'timecapsule',
+      resource_type: 'auto',
+      public_id: 'media-' + Date.now() + '-' + Math.round(Math.random() * 1e9),
+    };
   }
 });
 

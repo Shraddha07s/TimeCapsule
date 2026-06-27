@@ -61,7 +61,7 @@ export const createMemory = async (req, res) => {
         req.files.image.forEach(file => {
           media.push({
             type: 'image',
-            url: `/uploads/${file.filename}`
+            url: file.path
           });
         });
       }
@@ -69,7 +69,7 @@ export const createMemory = async (req, res) => {
         req.files.video.forEach(file => {
           media.push({
             type: 'video',
-            url: `/uploads/${file.filename}`
+            url: file.path
           });
         });
       }
@@ -77,7 +77,7 @@ export const createMemory = async (req, res) => {
         req.files.audio.forEach(file => {
           media.push({
             type: 'audio',
-            url: `/uploads/${file.filename}`
+            url: file.path
           });
         });
       }

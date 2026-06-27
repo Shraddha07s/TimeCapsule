@@ -10,5 +10,17 @@
     "details": "added a new memory: \"Our first date at tal\"",
     "targetId": "zx21m1u6moodcd62zhb",
     "type": "activity"
+  },
+  {
+    "_id": "t7rnte8udpduuxxnj36fsa",
+    "createdAt": "2026-06-27T17:32:33.420Z",
+    "updatedAt": "2026-06-27T17:32:33.420Z",
+    "coupleId": "kf7garo3s2wsdeoehjcm",
+    "userId": "kf7garo3s2wsdeoehjcm",
+    "username": "Shraddha",
+    "action": "created_memory",
+    "details": "added a new memory: \"Testing\"",
+    "targetId": "13tauuf4g18v5lbfg72d2",
+    "type": "activity"
   }
 ]

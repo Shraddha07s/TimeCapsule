@@ -126,6 +126,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date() });
 });
 
+// Global Error Handler for Uploads
+app.use((err, req, res, next) => {
+  if (err.name === 'MulterError') {
+    return res.status(400).json({ message: `Upload error: ${err.message}` });
+  } else if (err) {
+    return res.status(400).json({ message: err.message || 'An upload error occurred.' });
+  }
+  next();
+});
+
 // ==========================================
 // Static Assets / Production Serve
 // ==========================================
