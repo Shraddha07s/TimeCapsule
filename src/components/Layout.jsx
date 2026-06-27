@@ -47,8 +47,8 @@ const Layout = ({ children }) => {
 
   const themesList = [
     { id: 'dark', name: 'Dark Mode', color: 'bg-slate-800' },
-    { id: 'light', name: 'Light Mode', color: 'bg-white border border-gray-200' },
-    { id: 'pink', name: 'Romantic Pink', color: 'bg-pink-300' },
+    { id: 'light', name: 'Blush Theme', color: 'bg-[#FFF0F7] border border-[#FF5FA2]/20' },
+    { id: 'pink', name: 'Romantic Pink', color: 'bg-pink-800' },
     { id: 'sunset', name: 'Sunset Glow', color: 'bg-amber-600' },
     { id: 'space', name: 'Cyber Space', color: 'bg-cyan-950' }
   ];
@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive 
                     ? 'bg-gradient-to-r from-pink-500 to-violet-500 text-white shadow-lg shadow-pink-500/20' 
-                    : 'text-white/70 hover:bg-white/5 hover:text-white'
+                    : 'text-[var(--text-secondary)] hover:bg-black/5 dark:hover:bg-white/5 hover:text-[var(--text-primary)]'
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
@@ -94,10 +94,10 @@ const Layout = ({ children }) => {
           {/* Theme Selector */}
           <div className="p-4 border-t border-white/10">
             <div className="flex items-center gap-2 mb-3 px-2">
-              <Palette className="w-4 h-4 text-white/60" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-white/60">Choose Theme</span>
+              <Palette className="w-4 h-4 text-[var(--text-secondary)] opacity-80" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)] opacity-80">Choose Theme</span>
             </div>
-            <div className="flex justify-between gap-1.5 p-1.5 bg-black/20 rounded-xl">
+            <div className="flex justify-between gap-1.5 p-1.5 bg-black/10 dark:bg-black/20 rounded-xl">
               {themesList.map((t) => (
                 <button
                   key={t.id}
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
           </div>
 
           {/* Couple Connection Indicator */}
-          <div className="p-4 border-t border-white/10 bg-white/5 m-3 rounded-2xl">
+          <div className="p-4 border-t border-white/10 bg-black/5 dark:bg-white/5 m-3 rounded-2xl">
             {partner ? (
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -130,13 +130,13 @@ const Layout = ({ children }) => {
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border border-black" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs text-white/50 font-semibold tracking-wider uppercase">Connected with</p>
+                  <p className="text-xs text-[var(--text-secondary)] opacity-70 font-semibold tracking-wider uppercase">Connected with</p>
                   <h4 className="text-sm font-bold truncate">{partner.username}</h4>
                 </div>
               </div>
             ) : (
               <div className="text-center">
-                <p className="text-xs text-white/60 mb-2">Connect with your partner to share memories!</p>
+                <p className="text-xs text-[var(--text-secondary)] opacity-75 mb-2">Connect with your partner to share memories!</p>
                 <Link 
                   to="/connect"
                   onClick={() => setMobileOpen(false)}
@@ -166,7 +166,7 @@ const Layout = ({ children }) => {
             </div>
             <button
               onClick={handleLogout}
-              className="p-2 hover:bg-white/10 rounded-lg text-white/70 hover:text-white transition-colors"
+              className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
               title="Logout"
             >
               <LogOut className="w-5 h-5" />
@@ -178,9 +178,45 @@ const Layout = ({ children }) => {
   );
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen relative overflow-hidden bg-[var(--bg-gradient)] transition-all duration-500 text-[var(--text-primary)]">
+      
+      {/* Ambient Dreamy Background Spheres (Pinterest x Apple x Romantic Journal) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div 
+          className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-[120px] opacity-40 dark:opacity-20 animate-pulse"
+          style={{ 
+            backgroundColor: 'var(--accent-primary)',
+            animationDuration: '8s'
+          }}
+        />
+        <div 
+          className="absolute top-1/3 right-1/4 w-[450px] h-[450px] rounded-full blur-[150px] opacity-35 dark:opacity-10 animate-pulse"
+          style={{ 
+            backgroundColor: 'var(--accent-secondary)',
+            animationDuration: '12s'
+          }}
+        />
+        <div 
+          className="absolute -bottom-40 left-1/3 w-[500px] h-[500px] rounded-full blur-[130px] opacity-40 dark:opacity-15 animate-pulse"
+          style={{ 
+            backgroundColor: 'var(--accent-primary)',
+            animationDuration: '10s'
+          }}
+        />
+      </div>
+
+      {/* Floating Sparkles & Hearts (Scrapbook Aesthetic) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-10 select-none">
+        <span className="scrapbook-particle text-pink-400/20" style={{ left: '10%', animationDelay: '0s', animationDuration: '24s', fontSize: '20px' }}>💖</span>
+        <span className="scrapbook-particle text-pink-300/30" style={{ left: '25%', animationDelay: '4s', animationDuration: '18s', fontSize: '14px' }}>✨</span>
+        <span className="scrapbook-particle text-purple-400/15" style={{ left: '45%', animationDelay: '2s', animationDuration: '28s', fontSize: '18px' }}>🌸</span>
+        <span className="scrapbook-particle text-pink-400/20" style={{ left: '65%', animationDelay: '8s', animationDuration: '22s', fontSize: '16px' }}>💖</span>
+        <span className="scrapbook-particle text-pink-200/35" style={{ left: '80%', animationDelay: '6s', animationDuration: '20s', fontSize: '15px' }}>✨</span>
+        <span className="scrapbook-particle text-purple-300/15" style={{ left: '90%', animationDelay: '12s', animationDuration: '26s', fontSize: '12px' }}>⭐</span>
+      </div>
+
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-64 glass-panel border-r border-white/10 shrink-0 sticky top-0 h-screen z-20">
+      <aside className="hidden lg:block w-64 glass-panel border-r border-white/10 shrink-0 sticky top-0 h-screen z-20 relative">
         <SidebarContent />
       </aside>
 
@@ -192,7 +228,7 @@ const Layout = ({ children }) => {
         </div>
         <button 
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
+          className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors text-[var(--text-primary)]"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
