@@ -252,9 +252,9 @@ const LandingPage = () => {
             <span className="font-bold text-lg text-white">TimeCapsule</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white transition-colors">About</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <Link to="/about" className="hover:text-white transition-colors">About</Link>
+            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
           </div>
           <p className="text-xs text-white/30">&copy; {new Date().getFullYear()} TimeCapsule. All rights reserved.</p>
         </div>

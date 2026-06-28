@@ -251,8 +251,15 @@ const Layout = ({ children }) => {
         <div className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full">
           {children}
         </div>
-        <footer className="py-6 text-center text-xs text-white/30 border-t border-white/5 no-print">
-          &copy; {new Date().getFullYear()} TimeCapsule. Preserving love, one capsule at a time.
+        <footer className="py-6 text-center text-xs text-white/30 border-t border-white/5 no-print space-y-2">
+          <div className="flex justify-center gap-4 text-xs">
+            <Link to="/about" className="hover:text-[var(--text-primary)] transition-colors">About</Link>
+            <span>&bull;</span>
+            <Link to="/contact" className="hover:text-[var(--text-primary)] transition-colors">Contact</Link>
+            <span>&bull;</span>
+            <Link to="/privacy-policy" className="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</Link>
+          </div>
+          <p>&copy; {new Date().getFullYear()} TimeCapsule. Preserving love, one capsule at a time.</p>
         </footer>
       </main>
     </div>

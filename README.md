@@ -29,6 +29,7 @@ An elegant, full-stack digital time capsule platform where couples can preserve 
 *   **🎭 5 Beautiful Themes**: Switch between Dark Mode, Sunset Glow, Romantic Pink, Cyber Space, and the premium glassmorphic **Blush Theme** with smooth transitions.
 *   **🔔 Toast Notification System**: Rich alerts (success, info, warning, error) that pop up dynamically.
 *   **🖨️ PDF Export Layout**: Clean print sheets that compile your memories into a structured "Digital Memory Book".
+*   **📄 Legal & Info Pages**: Dedicated **About**, **Contact**, and **Privacy Policy** layouts accessible publicly or within the sidebar layout.
 *   **📱 Responsive & Fluid**: Built with glassmorphism layout utilities and responsive flex containers for mobile, tablet, and desktop views.
 
 ---
@@ -62,7 +63,7 @@ An elegant, full-stack digital time capsule platform where couples can preserve 
 
 ---
 
-## 📐 Architecture
+## 📐 Architecture & Data Flow
 
 ```text
                                ┌─────────────────┐
@@ -82,6 +83,40 @@ An elegant, full-stack digital time capsule platform where couples can preserve 
        │  MongoDB Atlas  │                           │    Cloudinary    │
        │ (JSON database) │                           │ (Photos & Video) │
        └─────────────────┘                           └──────────────────┘
+```
+
+When a couple uploads a new time capsule:
+1. The Vite client sends file uploads to the backend.
+2. The Express server passes media streams directly to Cloudinary using `multer-storage-cloudinary`.
+3. Cloudinary returns secure, fully-qualified asset URLs (`https://res.cloudinary.com/...`).
+4. The Express server saves references alongside metadata (unlock countdown dates, category keys) into MongoDB Atlas.
+5. Clients query APIs through encrypted JWT header parameters to fetch and render content securely.
+
+---
+
+## 📂 Project Directory Structure
+
+```text
+TimeCapsule/
+├── server/                    # Node.js + Express Backend
+│   ├── config/                # Cloudinary SDK and Mongo client setups
+│   ├── controllers/           # APIs business logic handlers
+│   ├── middleware/            # JWT authorization and Cloudinary multer engines
+│   ├── models/                # MongoDB models and schemas
+│   └── server.js              # Express app entries and error capture handlers
+├── src/                       # React.js Client Frontend
+│   ├── components/            # Reusable UI controls (Sidebar, Toasts, Layout)
+│   ├── context/               # Auth, Notification, and Theme React contexts
+│   ├── pages/                 # Full Page route layouts
+│   │   ├── AboutPage.jsx      # Dedicated project mission and vision
+│   │   ├── ContactPage.jsx    # Contact details and copy email widget
+│   │   ├── PrivacyPolicy.jsx  # Security guidelines and data erasure policies
+│   │   ├── Dashboard.jsx      # Anniversary timeline and statistics widgets
+│   │   └── LandingPage.jsx    # Hero call-to-actions and reviews footer
+│   ├── App.jsx                # Router registry and provider trees
+│   ├── index.css              # Custom themes variables and scrapbook animations
+│   └── main.jsx               # Entry DOM node bootstrap
+└── README.md                  # System overview and setup instructions
 ```
 
 ---
@@ -129,6 +164,19 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
 ---
 
+## 📸 Screenshots
+
+*Place your application screenshots inside `/public/screenshots/` and reference them below:*
+
+*   **Landing Page**: `![Landing Page](https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800)`
+*   **Dashboard & Streaks**: `![Dashboard](https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800)`
+*   **Memory Galaxy Canvas**: `![Memory Galaxy](https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=800)`
+*   **Create Time Capsule**: `![Create Memory](https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800)`
+*   **Future Letters cursive**: `![Future Letters](https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800)`
+*   **About & Contact Info**: `![About Pages](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800)`
+
+---
+
 ## 🗺️ Product Roadmap
 
 ### 🚀 Version 1.0 (Core Features)
@@ -144,6 +192,7 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 *   [x] Global multi-theme system (Dark, Sunset, Pink, Space, Blush).
 *   [x] Cloudinary media uploads migration.
 *   [x] Custom Toast notification context alerts.
+*   [x] Dedicated **About**, **Contact**, and **Privacy Policy** footer pages and routes.
 
 ### 🧠 Version 3.0 (Smart Memory & Co-activity)
 *   [ ] **AI Relationship Prompts**: Custom generative prompt triggers suggesting memory entries based on past activities.
